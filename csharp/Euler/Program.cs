@@ -13,10 +13,15 @@ namespace Euler
 		static void Main(string[] args)
 		{
 			var solver = new Solver();
-
-			Console.WriteLine("#7 is {0}", solver.Seven());
+			WriteIt(7, () => solver.Seven());
+			WriteIt(8, () => solver.Eight());
 
 			Console.ReadKey();
+		}
+
+		static void WriteIt(int problemNumber, Func<object> act)
+		{
+			Console.WriteLine("The answer to number {0} is {1}", problemNumber, act());
 		}
 	}
 }
