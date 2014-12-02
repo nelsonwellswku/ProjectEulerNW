@@ -8,7 +8,7 @@ namespace Euler
 	public class Solver
 	{
 		// 7
-		public int Seven()
+		public double Seven()
 		{
 			const int tenMillion = 10000000;
 			return new PrimeTools()
@@ -63,6 +63,15 @@ namespace Euler
 					}
 				}
 			}
+		}
+
+		// 10
+		public double Ten()
+		{
+			const double twoMillion = 2000000;
+			return new PrimeTools()
+				.Sieve(twoMillion)
+				.Sum();
 		}
 	}
 }

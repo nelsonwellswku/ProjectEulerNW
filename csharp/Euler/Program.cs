@@ -17,6 +17,7 @@ namespace Euler
 			WriteIt(7, () => solver.Seven());
 			WriteIt(8, () => solver.Eight());
 			WriteIt(9, () => solver.Nine());
+			WriteIt(10, () => solver.Ten());
 
 			Console.WriteLine("Press any key to exit.");
 			Console.ReadKey();
