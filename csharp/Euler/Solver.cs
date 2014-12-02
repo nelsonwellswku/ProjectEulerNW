@@ -43,9 +43,8 @@ namespace Euler
 		public int Nine()
 		{
 			return PythagoreanTriplets()
-				.Where(triplets => triplets.Sum() == 1000)
-				.Select(triplets => triplets.Aggregate((seed, newValue) => seed * newValue))
-				.First();
+				.First(triplets => triplets.Sum() == 1000)
+				.Aggregate((seed, newValue) => seed * newValue);
 		}
 
 		private IEnumerable<IEnumerable<int>> PythagoreanTriplets()
