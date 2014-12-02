@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="PrimeTools.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Solver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
