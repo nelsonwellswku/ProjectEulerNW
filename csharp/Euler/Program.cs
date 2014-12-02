@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Euler
 {
@@ -15,13 +16,19 @@ namespace Euler
 			var solver = new Solver();
 			WriteIt(7, () => solver.Seven());
 			WriteIt(8, () => solver.Eight());
+			WriteIt(9, () => solver.Nine());
 
+			Console.WriteLine("Press any key to exit.");
 			Console.ReadKey();
 		}
 
 		static void WriteIt(int problemNumber, Func<object> act)
 		{
-			Console.WriteLine("The answer to number {0} is {1}", problemNumber, act());
+			var stopWatch = new Stopwatch();
+			stopWatch.Start();
+			var result = act();
+			stopWatch.Stop();
+			Console.WriteLine("The answer to number {0} is {1}. Calculation time: {2} seconds", problemNumber, result, stopWatch.Elapsed.TotalSeconds);
 		}
 	}
 }
