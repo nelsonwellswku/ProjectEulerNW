@@ -41,14 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EulerProblemAttribute.cs" />
+    <Compile Include="IEulerProblem.cs" />
     <Compile Include="PrimeTools.cs" />
+    <Compile Include="Problems\Eight.cs" />
+    <Compile Include="Problems\Nine.cs" />
+    <Compile Include="Problems\Seven.cs" />
+    <Compile Include="Problems\Ten.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Solver.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

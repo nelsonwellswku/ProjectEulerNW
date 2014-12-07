@@ -1,23 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
 
 namespace Euler
 {
 	class Program
 	{
-		private const int _tenMillion = 10000000;
-
 		static void Main(string[] args)
 		{
-			var solver = new Solver();
-			WriteIt(7, () => solver.Seven());
-			WriteIt(8, () => solver.Eight());
-			WriteIt(9, () => solver.Nine());
-			WriteIt(10, () => solver.Ten());
+			var numberToInstanceDict = Assembly.GetExecutingAssembly()
+				.DefinedTypes
+				.Where(t => t.ImplementedInterfaces.Contains(typeof(IEulerProblem)))
+				.Where(t => t.GetCustomAttribute<EulerProblemAttribute>() != null)
+				.OrderBy(t => t.GetCustomAttribute<EulerProblemAttribute>().ProblemNumber)
+				.ToDictionary(t => t.GetCustomAttribute<EulerProblemAttribute>().ProblemNumber,
+							  t => Activator.CreateInstance(t) as IEulerProblem);
+
+			var sortedDictionary = new SortedDictionary<int, IEulerProblem>(numberToInstanceDict);
+			foreach(var entry in sortedDictionary)
+			{
+				WriteIt(entry.Key, () => entry.Value.Solve());
+			}
 
 			Console.WriteLine("Press any key to exit.");
 			Console.ReadKey();
