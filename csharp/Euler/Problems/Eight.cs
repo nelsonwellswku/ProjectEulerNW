@@ -1,5 +1,6 @@
 ﻿using Euler.Properties;
 using System.Linq;
+using Euler.Extensions;
 
 namespace Euler.Problems
 {
@@ -17,7 +18,7 @@ namespace Euler.Problems
 			foreach (var digit in thousandDigits)
 			{
 				var chunk = thousandDigits.Skip(indexCount).Take(13).ToList();
-				double total = chunk.Select(x => double.Parse(x.ToString())).Aggregate((seed, newValue) => seed * newValue);
+				double total = chunk.Select(x => double.Parse(x.ToString())).Multiply();
 				max = total > max ? total : max;
 
 				indexCount++;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Euler.Extensions;
 
 namespace Euler.Problems
 {
@@ -10,7 +11,7 @@ namespace Euler.Problems
 		{
 			return PythagoreanTriplets()
 						.First(triplets => triplets.Sum() == 1000)
-						.Aggregate((seed, newValue) => seed * newValue);
+						.Multiply();
 		}
 
 		private IEnumerable<IEnumerable<int>> PythagoreanTriplets()

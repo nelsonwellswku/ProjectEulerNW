@@ -10,6 +10,7 @@ namespace Euler
 	{
 		static void Main(string[] args)
 		{
+			Console.WriteLine("Gathering problems to run...");
 			var numberToInstanceDict = Assembly.GetExecutingAssembly()
 				.DefinedTypes
 				.Where(t => t.ImplementedInterfaces.Contains(typeof(IEulerProblem)))
@@ -17,14 +18,15 @@ namespace Euler
 				.OrderBy(t => t.GetCustomAttribute<EulerProblemAttribute>().ProblemNumber)
 				.ToDictionary(t => t.GetCustomAttribute<EulerProblemAttribute>().ProblemNumber,
 							  t => Activator.CreateInstance(t) as IEulerProblem);
+			Console.WriteLine("Problems gathered.\n");
 
 			var sortedDictionary = new SortedDictionary<int, IEulerProblem>(numberToInstanceDict);
 			foreach(var entry in sortedDictionary)
 			{
-				WriteIt(entry.Key, () => entry.Value.Solve());
+				WriteIt(entry.Key, entry.Value.Solve);
 			}
 
-			Console.WriteLine("Press any key to exit.");
+			Console.WriteLine("\nPress any key to exit.");
 			Console.ReadKey();
 		}
 
