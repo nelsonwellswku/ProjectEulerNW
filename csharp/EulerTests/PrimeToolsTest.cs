@@ -18,7 +18,7 @@ namespace EulerTests
 			PrimeTools primeTools = new PrimeTools();
 
 			// Act
-			IEnumerable<int> actual = primeTools.Sieve(13);
+			var actual = primeTools.Sieve(13);
 
 			// Assert
 			actual.ShouldAllBeEquivalentTo(expected);
