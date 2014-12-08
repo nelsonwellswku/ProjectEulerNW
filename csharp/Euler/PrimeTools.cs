@@ -10,15 +10,15 @@ namespace Euler
 		/// </summary>
 		/// <param name="n"></param>
 		/// <returns>IEnumerable of prime numbers</returns>
-		public IEnumerable<double> Sieve(double n)
+		public IEnumerable<ulong> Sieve(ulong n)
 		{
-			var dictionary = new Dictionary<double, MarkedStatus>();
-			for(int i = 2; i < n; i++)
+			var dictionary = new Dictionary<ulong, MarkedStatus>();
+			for(ulong i = 2; i < n; i++)
 			{
 				dictionary[i] = MarkedStatus.Unmarked;
 			}
 
-			double p = 2;
+			ulong p = 2;
 			while (p*p < n)
 			{
 				dictionary = MarkForP(dictionary, p, n);
@@ -28,9 +28,9 @@ namespace Euler
 			return dictionary.Where(x => x.Value == MarkedStatus.Unmarked).Select(x => x.Key);
 		}
 
-		private Dictionary<double, MarkedStatus> MarkForP(Dictionary<double, MarkedStatus> dictionary, double p, double max)
+		private Dictionary<ulong, MarkedStatus> MarkForP(Dictionary<ulong, MarkedStatus> dictionary, ulong p, ulong max)
 		{
-			for (double pp = p + p; pp < max; pp += p)
+			for (ulong pp = p + p; pp < max; pp += p)
 			{
 				dictionary[pp] = MarkedStatus.Marked;
 			}

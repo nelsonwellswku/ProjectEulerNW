@@ -14,13 +14,13 @@ namespace Euler.Problems
 						.Multiply();
 		}
 
-		private IEnumerable<IEnumerable<int>> PythagoreanTriplets()
+		private IEnumerable<IEnumerable<ulong>> PythagoreanTriplets()
 		{
-			foreach (var a in Enumerable.Range(1, 1000))
+			foreach (ulong a in Enumerable.Range(1, 1000))
 			{
-				foreach (var b in Enumerable.Range(1, 1000))
+				foreach (ulong b in Enumerable.Range(1, 1000))
 				{
-					foreach (var c in Enumerable.Range(1, 1000))
+					foreach (ulong c in Enumerable.Range(1, 1000))
 					{
 						if (((a * a) + (b * b)) == (c * c))
 						{

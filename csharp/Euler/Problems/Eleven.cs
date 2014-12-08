@@ -1,16 +1,14 @@
-﻿using System;
+﻿using Euler.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Euler.Extensions;
 
 namespace Euler.Problems
 {
 	[EulerProblem(11)]
 	public class Eleven : IEulerProblem
 	{
-		private List<double> _grid = new List<double> {
+		private List<int> _grid = new List<int> {
 08, 02, 22, 97, 38, 15, 00, 40, 00, 75, 04, 05, 07, 78, 52, 12, 50, 77, 91, 08,
 49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 04, 56, 62, 00,
 81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 03, 49, 13, 36, 65,
@@ -35,13 +33,13 @@ namespace Euler.Problems
 
 		public object Solve()
 		{
-			double max = 0;
-			foreach(var index in Enumerable.Range(0, _grid.Count))
+			ulong max = 0;
+			foreach(int index in Enumerable.Range(0, _grid.Count))
 			{
 				foreach (var direction in new[] { Direction.N, Direction.NE, Direction.E, Direction.SE })
 				{
 					var items = Travel(index, direction);
-					var total = items.TakeWhile(x => x != 0).Multiply();
+					var total = items.TakeWhile(x => x != 0).Select(x => Convert.ToUInt64(x)).Multiply();
 					max = total > max ? total : max;
 				}
 			}
@@ -49,7 +47,7 @@ namespace Euler.Problems
 			return max;
 		}
 
-		private IEnumerable<double> Travel(int startingIndex, Direction direction)
+		private IEnumerable<int> Travel(int startingIndex, Direction direction)
 		{
 			switch(direction)
 			{
@@ -80,7 +78,7 @@ namespace Euler.Problems
 			return null;
 		}
 
-		private IEnumerable<double> TravelNorth(int startingIndex)
+		private IEnumerable<int> TravelNorth(int startingIndex)
 		{
 			yield return _grid.ElementAtOrDefault(startingIndex);
 			yield return _grid.ElementAtOrDefault(startingIndex - 20);
@@ -88,7 +86,7 @@ namespace Euler.Problems
 			yield return _grid.ElementAtOrDefault(startingIndex - 60);
 		}
 
-		private IEnumerable<double> TravelNorthEast(int startingIndex)
+		private IEnumerable<int> TravelNorthEast(int startingIndex)
 		{
 			yield return _grid.ElementAtOrDefault(startingIndex);
 			yield return _grid.ElementAtOrDefault(startingIndex - 20 + 1);
@@ -96,7 +94,7 @@ namespace Euler.Problems
 			yield return _grid.ElementAtOrDefault(startingIndex - 60 + 3);
 		}
 
-		private IEnumerable<double> TravelEast(int startingIndex)
+		private IEnumerable<int> TravelEast(int startingIndex)
 		{
 			for(var i = 0; i < 4; i++)
 			{
@@ -104,7 +102,7 @@ namespace Euler.Problems
 			}
 		}
 
-		private IEnumerable<double> TravelSouthEast(int startingIndex)
+		private IEnumerable<int> TravelSouthEast(int startingIndex)
 		{
 			yield return _grid.ElementAtOrDefault(startingIndex);
 			yield return _grid.ElementAtOrDefault(startingIndex + 20 + 1);

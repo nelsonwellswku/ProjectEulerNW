@@ -5,15 +5,14 @@ namespace Euler.Extensions
 {
 	public static class IEnumerableExtensions
 	{
-		public static double Multiply(this IEnumerable<double> list)
+		public static ulong Multiply(this IEnumerable<ulong> list)
 		{
-
 			return list.Count() > 0 ? list.Aggregate((x, y) => x * y) : 0;
 		}
 
-		public static double Multiply(this IEnumerable<int> list)
+		public static ulong Sum(this IEnumerable<ulong> list)
 		{
-			return list.Count() > 0 ? list.Aggregate((x, y) => x * y) : 0;
+			return list.Count() > 0 ? list.Aggregate((x, y) => x + y) : 0;
 		}
 	}
 }

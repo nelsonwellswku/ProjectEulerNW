@@ -14,7 +14,7 @@ namespace EulerTests
 		public void PrimeTools_TestSieve()
 		{
 			// Arrange
-			int[] expected = new int[] { 2, 3, 5, 7, 11 };
+			ulong[] expected = new ulong[] { 2, 3, 5, 7, 11 };
 			PrimeTools primeTools = new PrimeTools();
 
 			// Act

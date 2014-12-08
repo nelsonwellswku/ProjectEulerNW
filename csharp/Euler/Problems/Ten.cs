@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Euler.Extensions;
 
 namespace Euler.Problems
 {
@@ -7,7 +8,7 @@ namespace Euler.Problems
 	{
 		public object Solve()
 		{
-			const double twoMillion = 2000000;
+			const ulong twoMillion = 2000000;
 			return new PrimeTools()
 				.Sieve(twoMillion)
 				.Sum();

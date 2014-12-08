@@ -7,7 +7,7 @@ namespace Euler.Problems
 	{
 		public object Solve()
 		{
-			const int tenMillion = 10000000;
+			const ulong tenMillion = 10000000;
 			return new PrimeTools()
 				.Sieve(tenMillion)
 				.Skip(10000)
