@@ -18,9 +18,9 @@ namespace Euler
 				.OrderBy(t => t.GetCustomAttribute<EulerProblemAttribute>().ProblemNumber)
 				.ToDictionary(t => t.GetCustomAttribute<EulerProblemAttribute>().ProblemNumber,
 							  t => Activator.CreateInstance(t) as IEulerProblem);
+			var sortedDictionary = new SortedDictionary<int, IEulerProblem>(numberToInstanceDict);
 			Console.WriteLine("Problems gathered.\n");
 
-			var sortedDictionary = new SortedDictionary<int, IEulerProblem>(numberToInstanceDict);
 			foreach(var entry in sortedDictionary)
 			{
 				WriteIt(entry.Key, entry.Value.Solve);
