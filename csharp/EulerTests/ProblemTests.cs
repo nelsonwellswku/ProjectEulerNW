@@ -67,5 +67,13 @@ namespace EulerTests
 			var result = problem.Solve();
 			result.Should().Be(837799);
 		}
+
+		[TestMethod]
+		public void Sixteen()
+		{
+			var problem = new Sixteen();
+			var result = problem.Solve();
+			result.Should().Be(1366);
+		}
 	}
 }
