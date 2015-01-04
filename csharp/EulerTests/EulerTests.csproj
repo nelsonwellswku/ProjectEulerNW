@@ -58,6 +58,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="PrimeToolsTest.cs" />
+    <Compile Include="ProblemTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Euler\Euler.csproj">

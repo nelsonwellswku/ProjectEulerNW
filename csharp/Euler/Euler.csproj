@@ -47,6 +47,7 @@
     <Compile Include="PrimeTools.cs" />
     <Compile Include="Problems\Eight.cs" />
     <Compile Include="Problems\Eleven.cs" />
+    <Compile Include="Problems\Fourteen.cs" />
     <Compile Include="Problems\Nine.cs" />
     <Compile Include="Problems\Seven.cs" />
     <Compile Include="Problems\Ten.cs" />

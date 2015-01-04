@@ -13,7 +13,7 @@ namespace Euler.Problems
 		{
 			int answer = 0;
 			CancellationTokenSource tokenSource = new CancellationTokenSource();
-			
+
 			var options = new ParallelOptions() { CancellationToken = tokenSource.Token, MaxDegreeOfParallelism = 4 };
 
 			try
@@ -28,7 +28,7 @@ namespace Euler.Problems
 					}
 				});
 			}
-			catch(OperationCanceledException)
+			catch (OperationCanceledException)
 			{
 				// no op
 			}
@@ -38,7 +38,7 @@ namespace Euler.Problems
 
 		private IEnumerable<int> TriangleNumbers()
 		{
-			foreach(var num in Enumerable.Range(1, int.MaxValue))
+			foreach (var num in Enumerable.Range(1, int.MaxValue))
 			{
 				var triangleNumber = Enumerable.Range(1, num - 1).Sum();
 				yield return triangleNumber;
@@ -47,9 +47,9 @@ namespace Euler.Problems
 
 		private IEnumerable<int> Divisors(int number)
 		{
-			foreach(var potentialDivisor in Enumerable.Range(1, (number / 2) + 1))
+			foreach (var potentialDivisor in Enumerable.Range(1, (number / 2) + 1))
 			{
-				if(number % potentialDivisor == 0)
+				if (number % potentialDivisor == 0)
 				{
 					yield return potentialDivisor;
 				}

@@ -8,8 +8,8 @@ namespace Euler.Problems
 	{
 		public object Solve()
 		{
-			var result = GetNumbers().Sum();
-			return result;
+			var result = string.Join("", GetNumbers().Sum().ToString().Replace(".", string.Empty).Take(10));
+			return double.Parse(result);
 		}
 
 		IEnumerable<double> GetNumbers()
